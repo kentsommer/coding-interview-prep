@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 
 #################################################
@@ -73,3 +74,29 @@ def get_num_divisors(n):
             current *= vals[x]
         result = current
     return result
+
+
+def memo(f):
+    f.cache = {}
+    def _f(*args):
+        if args not in f.cache:
+            f.cache[args] = f(*args)
+        return f.cache[args]
+    return _f
+
+@memo
+def collatz(n):
+    if n == 1:
+        return 1
+    if n % 2 == 0:
+        return 1 + collatz(n / 2)
+    if n % 2 == 1:
+        return 1 + collatz(3 * n + 1)
+
+
+def factorial(n):
+    return math.factorial(n)
+
+
+def pow(n, power):
+    return math.pow(n, power)

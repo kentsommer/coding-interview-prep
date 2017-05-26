@@ -223,6 +223,32 @@ def large_sum(digits=10):
     return result
 
 
+#####################
+#### Problem 014 ####
+#####################
+def longest_collatz(n=1000000):
+    seq = []
+    for x in range(1, n):
+        seq.append(collatz(x))
+    print(seq)
+    return np.argmax(seq) + 1
+
+
+#####################
+#### Problem 015 ####
+#####################
+def lattice_paths(size=20):
+    return int(factorial(2 * size) / pow(factorial(size), 2))
+
+
+#####################
+#### Problem 016 ####
+#####################
+def digit_sum(n=2**1000):
+    digits = str(n)
+    values = [int(x) for x in digits]
+    return sum(values)
+
 
 ##############################################
 ####                                      ####
@@ -242,7 +268,10 @@ def get_solution(problem_num):
                      sum_of_primes,
                      largest_product_grid,
                      highly_div_triangular_num,
-                     large_sum]
+                     large_sum,
+                     longest_collatz,
+                     lattice_paths,
+                     digit_sum]
     return function_list[problem_num]
 
 
